@@ -70,3 +70,6 @@ mathjax/
 wikidata/
 *local_settings.py
 img/
+djcelery/
+pip-selfcheck.json
+src/
