@@ -863,7 +863,7 @@ article{
 
   section.content{
     // background-color:white;
-    border: 1px solid #eee;
+    // border: 1px solid #eee;
 }
 
 
@@ -1209,7 +1209,7 @@ aside#help{
     border:1px solid #AAA;
     border-bottom:3px solid #BBB;
     padding:0px;
-    margin:5px;
+    margin:5px calc((100% - 11rem)/2);
     overflow:hidden;
     width:11rem;
     height:9rem;
@@ -1239,7 +1239,7 @@ aside#help{
 .scard-content {
     height: 2.7em;
     padding: 0.5rem;
-    margin:5px;
+    margin:5px calc((100% - 11rem)/2);
     padding-top: 0.5cm;
     border-radius: 0 0 2px 2px;
     overflow: hidden;
@@ -1264,12 +1264,12 @@ aside#help{
     //color:#ececec;
     height: height;
     font-size:0.6em;
-    padding: 0.5rem;
-    margin:5px;
-    padding-top: 0.1cm;
+    padding:0.5rem;
+    margin:5px calc((100% - 11rem)/2);
+    padding-top:0.1cm;
     margin-top:-0.25em;
-    border-radius: 0 0 2px 2px;
-    overflow: hidden;
+    border-radius:0 0 2px 2px;
+    overflow:hidden;
     width:11rem;
     background-color:#CCCCCC;
 
@@ -1280,7 +1280,7 @@ aside#help{
     color:#333333;
     height: 40px;
     padding: 0.5rem;
-    margin:5px;
+    margin:5px calc((100% - 11rem)/2);
     padding-top: 0.1cm;
     margin-top:-0.25em;
     border-radius: 0 0 2px 2px;

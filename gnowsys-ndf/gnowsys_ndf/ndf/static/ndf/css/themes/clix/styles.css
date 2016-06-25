@@ -24177,10 +24177,6 @@ article .tabs span {
   font-size: 17px;
   vertical-align: text-bottom;
 }
-/* line 864, ../../../scss/_app_styles.scss */
-article section.content {
-  border: 1px solid #eee;
-}
 
 /* line 871, ../../../scss/_app_styles.scss */
 .card > div:hover {
@@ -24524,7 +24520,7 @@ aside#help p, aside#help h5, aside#help h6 {
   border: 1px solid #AAA;
   border-bottom: 3px solid #BBB;
   padding: 0px;
-  margin: 5px;
+  margin: 5px calc((100% - 11rem)/2);
   overflow: hidden;
   width: 11rem;
   height: 9rem;
@@ -24557,7 +24553,7 @@ aside#help p, aside#help h5, aside#help h6 {
 .scard-content {
   height: 2.7em;
   padding: 0.5rem;
-  margin: 5px;
+  margin: 5px calc((100% - 11rem)/2);
   padding-top: 0.5cm;
   border-radius: 0 0 2px 2px;
   overflow: hidden;
@@ -24581,7 +24577,7 @@ aside#help p, aside#help h5, aside#help h6 {
   height: height;
   font-size: 0.6em;
   padding: 0.5rem;
-  margin: 5px;
+  margin: 5px calc((100% - 11rem)/2);
   padding-top: 0.1cm;
   margin-top: -0.25em;
   border-radius: 0 0 2px 2px;
@@ -24596,7 +24592,7 @@ aside#help p, aside#help h5, aside#help h6 {
   color: #333333;
   height: 40px;
   padding: 0.5rem;
-  margin: 5px;
+  margin: 5px calc((100% - 11rem)/2);
   padding-top: 0.1cm;
   margin-top: -0.25em;
   border-radius: 0 0 2px 2px;
