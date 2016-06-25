@@ -1213,28 +1213,28 @@ aside#help{
     overflow:hidden;
     width:11rem;
     height:9rem;
-     &:hover{
-    box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.16), 0 2px 10px 1px rgba(0, 0, 0, 0.12);
-    transition: box-shadow 0.5s ease;
-  }
+    &:hover{
+      box-shadow: 0 2px 5px 2px rgba(0, 0, 0, 0.16), 0 2px 10px 1px rgba(0, 0, 0, 0.12);
+      transition: box-shadow 0.5s ease;
+    }
     /*float:left;*/
 
-.scard_header {
-    text-align:center;
-    position:fixed;
-    height:20rem;
-    border:1px solid #AAA;
-    border-bottom:3px solid #BBB;
-    padding:0px;
-    margin:5px;
-    left:0px;
-    right:0px;
-    background:#FFF;
-    padding:25px 0px 5px 0px;
-    border-bottom:5px solid #CCC;
-    font-size:20px;
-    font-weight:bold;
-  }
+    .scard_header {
+      text-align:center;
+      position:fixed;
+      height:20rem;
+      border:1px solid #AAA;
+      border-bottom:3px solid #BBB;
+      padding:0px;
+      margin:5px;
+      left:0px;
+      right:0px;
+      background:#FFF;
+      padding:25px 0px 5px 0px;
+      border-bottom:5px solid #CCC;
+      font-size:20px;
+      font-weight:bold;
+    }
 }
 .scard-content {
     height: 2.7em;
@@ -1246,8 +1246,8 @@ aside#help{
     width:11rem;
     margin-top: -0.3em;
     /*height: 8.25rem;*/
-      background-color:#3e3e3e;
-  .scard-title{
+    background-color:#3e3e3e;
+    .scard-title{
       font-size: 0.8em;
       margin-top: -1em;
       float: left;
@@ -1256,7 +1256,6 @@ aside#help{
       display:inline-block;
       text-align: center;
     }
-
 
   }
 
@@ -1290,7 +1289,7 @@ aside#help{
     display-inline:block;
 }
 
- p {
+p {
     margin:0px;
     padding:10px;
   }
@@ -1304,89 +1303,87 @@ aside#help{
     position:relative;
     overflow:hidden;
     background-color:#f2f2f2;
-    img  {
-    border-radius: 2px 2px 0 0;
-    display: block;
-    margin: 0 auto;
-    opacity: 0.9;
-    //width:100%;
-    height:100%;
-  }
+    img {
+      border-radius: 2px 2px 0 0;
+      display: block;
+      margin: 0 auto;
+      opacity: 0.9;
+      //width:100%;
+      height:100%;
+    }
 
-  i {
-  font-size: 7rem;
-  opacity: 0.75;
-  display: block;
-  margin: -15px auto;
-  text-align: center;
-  color: gray;
-  font-family: "foundation-icons";
-  font-style: normal;
-  font-variant: normal;
-  text-transform: none;
-  text-decoration: inherit;
-  }
+    i {
+      font-size: 7rem;
+      opacity: 0.75;
+      display: block;
+      margin: -15px auto;
+      text-align: center;
+      color: gray;
+      font-family: "foundation-icons";
+      font-style: normal;
+      font-variant: normal;
+      text-transform: none;
+      text-decoration: inherit;
+    }
 
-  i.common-icon:before{
-  content: "\f1fb";
-  }
-  i.file:before {
-  content: "\f18e";
-  }
-  i.page:before {
-  content: "\f18e";
-  }
-  i.collection:before {
-  content: "\f18a";
-  }
-  i.documents:before {
-  content: "\f18b";
-  }
-  i.pdf:before {
-  content: "\f18b";
-  }
-  i.text:before {
-  content: "\f18e";
-  }
-  i.interactives:before {
-  content: "\f1b2";
-  }
-  i.ebooks:before {
-  content: "\f11e";
-  }
-  i.images:before {
-  content: "\f125";
-  }
-  i.audios:before, i.audio:before {
-  content: "\f17b";
-  }
-  i.videos:before, i.video:before {
-  content: "\f20e";
-  }
+    i.common-icon:before{
+      content: "\f1fb";
+    }
+    i.file:before {
+      content: "\f18e";
+    }
+    i.page:before {
+      content: "\f18e";
+    }
+    i.collection:before {
+      content: "\f18a";
+    }
+    i.documents:before {
+      content: "\f18b";
+    }
+    i.pdf:before {
+      content: "\f18b";
+    }
+    i.text:before {
+      content: "\f18e";
+    }
+    i.interactives:before {
+      content: "\f1b2";
+    }
+    i.ebooks:before {
+      content: "\f11e";
+    }
+    i.images:before {
+      content: "\f125";
+    }
+    i.audios:before, i.audio:before {
+      content: "\f17b";
+    }
+    i.videos:before, i.video:before {
+      content: "\f20e";
+    }
 
-
-}
+  }
  .published.scard-action {
       background: #A6D9CB;
-    }
+  }
 
  .draft.scard-action {
       content: "Draft";
       background: #DCDCDC;
-
-    }
+  }
 
   .deleted.scard-action {
       border-color: transparent $alert-color transparent transparent;
       border-color: rgba(255,255,255,0) $alert-color rgba(255,255,255,0) rgba(255,255,255,0);
-    }
+  }
 
   .moderation.scard-action {
       border-color: transparent $primary-color transparent transparent;
       border-color: rgba(255,255,255,0) $primary-color rgba(255,255,255,0) rgba(255,255,255,0);
 
       .label-text:before{ content: "Mod"; }
-    }
+  }
 
 
 .scard_footer {
@@ -1395,7 +1392,7 @@ aside#help{
   color: gray;
   font-size: small;
   height: 2rem;
-  }
+}
 /* End Simple Card CSS*/
 
 
