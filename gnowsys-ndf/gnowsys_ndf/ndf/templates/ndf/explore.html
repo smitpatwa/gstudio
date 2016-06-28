@@ -16,14 +16,14 @@
 			<a href="{% url 'explore' %}">Explore</a>
 		</div>
 		<div class="small-9 medium-6 columns toggleButtons" align="center" data-equalizer-watch="rexp_head" style="height: inherit;">
-			<a href="{% url 'explore_courses' %}" class="small button {%if title == 'courses'%} active{% endif %}" style="padding-left: 12px; padding-right: 12px;">
+			<a href="{% url 'explore_courses' %}" class="small button {%if title == 'courses'%} active{% endif %}" style="padding: 8px 12px;">
 				Courses
 			</a>
-			<a href="{% url 'explore_groups' %}" class="small button {%if title == 'groups'%} active{% endif %}" style="padding-left: 12px; padding-right: 12px;">
+			<a href="{% url 'explore_groups' %}" class="small button {%if title == 'groups'%} active{% endif %}" style="padding: 8px 12px;">
 				Groups
 			</a>
 			{% if is_gstaff %}
-				<a href="{% url 'explore_basecourses' %}" class="small button {%if title == 'base courses'%} active{% endif %}" style="padding-left: 12px; padding-right: 12px;">
+				<a href="{% url 'explore_basecourses' %}" class="small button {%if title == 'base courses'%} active{% endif %}" style="padding: 8px 12px;">
 					Base Course
 				</a>
 			{% endif %}
