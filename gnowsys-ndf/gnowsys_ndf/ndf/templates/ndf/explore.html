@@ -11,34 +11,33 @@
 {% block body_content %}
 	{% check_is_gstaff groupid request.user as is_gstaff %}
 
-	<div class="row explore-header">
-		<div class="small-12 medium-2 columns heading"><a href="{% url 'explore' %}">Explore</a></div>
-		<div class="small-12 medium-10 columns expore-type">
-			<div class="toggleButtons">
-				<a href="{% url 'explore_courses' %}" class="button {%if title == 'courses'%} active{% endif %}">
-					Courses
+	<div class="row explore-header" data-equalizer="rexp_head">
+		<div class="small-12 medium-3 columns heading" align="center" data-equalizer-watch="rexp_head" style="height: inherit;">
+			<a href="{% url 'explore' %}">Explore</a>
+		</div>
+		<div class="small-9 medium-6 columns toggleButtons" align="center" data-equalizer-watch="rexp_head" style="height: inherit;">
+			<a href="{% url 'explore_courses' %}" class="small button {%if title == 'courses'%} active{% endif %}" style="padding: 8px 12px;">
+				Courses
+			</a>
+			<a href="{% url 'explore_groups' %}" class="small button {%if title == 'groups'%} active{% endif %}" style="padding: 8px 12px;">
+				Groups
+			</a>
+			{% if is_gstaff %}
+				<a href="{% url 'explore_basecourses' %}" class="small button {%if title == 'base courses'%} active{% endif %}" style="padding: 8px 12px;">
+					Base Course
 				</a>
-				<a href="{% url 'explore_groups' %}" class="button {%if title == 'groups'%} active{% endif %}">
-					Groups
-				</a>
-				{% if is_gstaff %}
-					<a href="{% url 'explore_basecourses' %}" class="button {%if title == 'base courses'%} active{% endif %}">
-						Base Course
-					</a>
-				{% endif %}
-
-
-
-			</div>
-				{% if title == "base courses" and is_gstaff %}
-					<a class="tiny button radius right" href="{% url 'create_edit' groupid %}"><i class="fi-plus"></i>{% trans " New Course" %}</a>
-				{% endif %}
+			{% endif %}
+		</div>
+		<div class="small-3 medium-3 columns" align="center" data-equalizer-watch="rexp_head" style="height: inherit;">
+			{% if title == "base courses" and is_gstaff %}
+				<a class="tiny button radius" href="{% url 'create_edit' groupid %}" style="padding-left: 10px; padding-right: 10px;"><i class="fi-plus"></i>{% trans " New Course" %}</a>
+			{% endif %}
 		</div>
 		{% comment %}
 		<div class="medium-3 columns explore-search small-12">
 			<input type="text" placeholder="Search">
 		</div>
-		<div class="small-3 columns {%if title == 'courses'%}label info{% endif %}">
+		<div class="small-4 columns {%if title == 'courses'%}label info{% endif %}">
 			<a href="{% url 'explore_courses' %}">Courses</a>
 		</div>
 
@@ -63,7 +62,6 @@
 		</section>
 
 	{% endif %}
-
 
 
 {% endblock body_content %}

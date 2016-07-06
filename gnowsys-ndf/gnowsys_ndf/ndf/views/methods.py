@@ -2219,7 +2219,6 @@ def get_widget_built_up_data(at_rt_objectid_or_attr_name_list, node, type_of_set
                             altnames = field.altnames.split(";")[0]
                         else:
                             altnames = field.altnames
-
                 elif set(node["member_of"]).issubset(field.object_type):
                     # It means we are dealing with inverse relation
                     data_type = node.structure[field.inverse_name]
@@ -2228,6 +2227,16 @@ def get_widget_built_up_data(at_rt_objectid_or_attr_name_list, node, type_of_set
                         if ";" in field.altnames:
                             altnames = field.altnames.split(";")[1]
 
+                else:
+                    member_of_node = node_collection.one({'_id': node.member_of[0]})
+                    if set(member_of_node["type_of"]).issubset(field.subject_type):
+                        data_type = node.structure[field.name]
+                        value = node[field.name]
+                        if field.altnames:
+                            if ";" in field.altnames:
+                                altnames = field.altnames.split(";")[0]
+                            else:
+                                altnames = field.altnames
             else:
                 # For AttributeTypes
                 altnames = field.altnames
@@ -4984,11 +4993,18 @@ def node_thread_access(group_id, node):
        * thread_node - used in discussion.html
        * success (i.e True/False)
     """
+
+    from gnowsys_ndf.ndf.templatetags.ndf_tags import get_relation_value, get_attribute_value
+
     has_thread_node = None
+    discussion_enable_val = get_attribute_value(node._id,"discussion_enable")
+
+    if not discussion_enable_val:
+        return has_thread_node, discussion_enable_val
+
     thread_start_time = None
     thread_end_time = None
     allow_to_comment = True  # default set to True to allow commenting if no date is set for thread
-    from gnowsys_ndf.ndf.templatetags.ndf_tags import get_relation_value, get_attribute_value
     # has_thread_node_thread_grel = get_relation_value(node._id,"has_thread")
     grel_dict = get_relation_value(node._id,"has_thread", True)
     is_cursor = grel_dict.get("cursor",False)
@@ -5195,6 +5211,8 @@ def create_clone(user_id, node, group_id):
         cloned_copy['created_by'] = int(user_id)
         # cloned_copy['prior_node'] = node.prior_node
         cloned_copy['contributors'] = [int(user_id)]
+        cloned_copy['post_node'] = []
+        cloned_copy['prior_node'] = []
         cloned_copy['relation_set'] = []
         cloned_copy['attribute_set'] = []
         cloned_copy['origin'] = [{'fork_of': node._id}]
@@ -5219,9 +5237,10 @@ def replicate_resource(request, node, group_id):
         create_thread_for_node_flag = True
         user_id = request.user.id
         new_gsystem = create_clone(user_id, node, group_id)
+        thread_created = False
 
         if new_gsystem:
-            # FORKING TRIPLES 
+            # FORKING TRIPLES
 
             ##### TRIPLES GATTRIBUTES
             node_gattr_cur = triple_collection.find({'_type': 'GAttribute', 'subject': node._id})
@@ -5239,7 +5258,8 @@ def replicate_resource(request, node, group_id):
                 rt_id = each_rel['relation_type']['_id']
                 right_subj = each_rel['right_subject']
                 rt_node = node_collection.one({'_id': ObjectId(rt_id)})
-
+                if rt_node.name == 'has_thread':
+                    thread_created = True
                 right_sub_new = None
                 if isinstance(right_subj,list):
                     right_sub_new = []
@@ -5253,10 +5273,9 @@ def replicate_resource(request, node, group_id):
                     right_sub_new = right_sub_new_node._id
 
                 create_grelation(new_gsystem._id,rt_node,right_sub_new)
-
-
             if "QuizItemEvent" in new_gsystem.member_of_names_list:
-                thread_obj = create_thread_for_node(request,group_id, new_gsystem)
+                if not thread_created:
+                    thread_obj = create_thread_for_node(request,group_id, new_gsystem)
 
         # clone_of_RT = node_collection.one({'_type': "RelationType", 'name': "clone_of"})
         # create_grelation(new_gsystem._id, clone_of_RT, node._id)
@@ -5562,10 +5581,10 @@ def get_course_completetion_status(group_obj, user_id,ids_list=False):
 
       # print "\n\n return_perc==== ",return_perc
       result_dict['course_complete_percentage'] = return_perc
-      result_dict['modules_completed_count'] = len(completed_modules_ids)
+      result_dict['modules_completed_count'] = completed_modules_cur.count()
       result_dict['modules_total_count'] = all_modules_of_grp.count()
-      result_dict['units_completed_count'] = len(completed_modules_ids)
-      result_dict['units_total_count'] = all_modules_of_grp.count()
+      result_dict['units_completed_count'] = completed_units_cur.count()
+      result_dict['units_total_count'] = all_units_of_grp.count()
 
       result_dict.update({'success': False})
       # print "\n\nresult_dict == ",result_dict
